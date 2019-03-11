@@ -1,21 +1,19 @@
-# Project name
+# Poster
 
-Third-party service badges (if available)
+[![Build Status](https://semaphoreci.com/api/v1/aydarmingazov/poster-api/branches/master/badge.svg)](https://semaphoreci.com/aydarmingazov/poster-api)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/77c2c26513747d268f38/test_coverage)](https://codeclimate.com/github/AidarMingazov/poster-api/test_coverage)
+[![Maintainability](https://api.codeclimate.com/v1/badges/77c2c26513747d268f38/maintainability)](https://codeclimate.com/github/AidarMingazov/poster-api/maintainability)
 
-[![Build Status](https://semaphoreapp.com/api/v1/projects/31b68af8b073708a56e4e005bbcba2af4802816d/76140/shields_badge.png)](https://semaphoreapp.com/fs/rails-base)
-[![Test Coverage](https://codeclimate.com/github/fs/rails-base/badges/coverage.svg)](https://codeclimate.com/github/fs/rails-base)
-[![Code Climate](https://codeclimate.com/github/fs/rails-base.png)](https://codeclimate.com/github/fs/rails-base)
+## Project task tracker
 
-## Project description
-
-Some short project description. Link to Basecamp project will be fine too.
+https://www.pivotaltracker.com/n/projects/2318427
 
 ## Dependencies
 
-* PostgreSQL 9.3
-* Ruby 2.2.3
+* PostgreSQL 11.2
+* Ruby 2.4.2
 * PhantomJS
-* Rails 4
+* Rails 5
 
 Setup required dependencies from `Brewfile`:
 ```bash
@@ -27,7 +25,7 @@ brew bundle
 
 ```bash
 # clone repo
-git clone git@github.com:account/repo.git
+git clone git@github.com:AidarMingazov/poster-api.git
 cd repo
 
 # run setup script
@@ -46,10 +44,6 @@ bin/server
 * `bin/quality` - run brakeman and rails_best_practices for the app
 * `bin/ci` - should be used in the CI to run specs
 
-## Staging
-
-* http://fs-rails-base.herokuapp.com
-
 ## Production
 
-* http://fs-rails-base.herokuapp.com
+* https://poster-base.herokuapp.com
