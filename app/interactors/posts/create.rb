@@ -1,11 +1,11 @@
-module Post
-  class Update
+module Posts
+  class Create
     include Interactor
 
-    delegate :params, :post, :current_user, to: :context
+    delegate :params, :current_user, to: :context
 
     before do
-      update_post
+      context.post = create_post
     end
 
     def call
@@ -14,8 +14,10 @@ module Post
 
     private
 
-    def update_post
-      return if context.post.update(params)
+    def create_post
+      post ||= current_user.posts.create(params)
+
+      return post if post.present? && post.save
 
       context.errors = post.errors.full_messages.join(", ")
     end

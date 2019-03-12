@@ -28,10 +28,10 @@ class PostsController < ApplicationController
   end
 
   def create_post
-    Post::Create.call!(params: post_params, current_user: current_user).post
+    Posts::Create.call!(params: post_params, current_user: current_user).post
   end
 
   def update_post
-    Post::Update.call!(params: post_params, post: post, current_user: current_user).post
+    Posts::Update.call!(params: post_params, post: post, current_user: current_user).post
   end
 end
