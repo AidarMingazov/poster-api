@@ -9,6 +9,6 @@ class ApplicationPolicy
   private
 
   def owner?
-    user.present? && record.user == user
+    record.user == user
   end
 end

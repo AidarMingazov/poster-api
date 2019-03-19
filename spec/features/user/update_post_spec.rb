@@ -1,11 +1,11 @@
 require "rails_helper"
 
-feature "Create post" do
+feature "Update post" do
   include_context "current user signed in"
 
   let!(:post) { create :post, user: current_user }
 
-  scenario "User creates post" do
+  scenario "User updates a post" do
     visit edit_post_path(post)
 
     fill_in "Post title", with: title

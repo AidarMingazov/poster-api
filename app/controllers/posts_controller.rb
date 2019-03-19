@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   expose_decorated :post
 
-  before_action :authorize_resource, only: %i[new edit create update]
+  before_action :authorize_resource
 
   def new
   end
@@ -23,15 +23,15 @@ class PostsController < ApplicationController
     params.require(:post).permit(:title, :body)
   end
 
-  def authorize_resource
-    authorize post
-  end
-
   def create_post
-    Posts::Create.call!(params: post_params, current_user: current_user).post
+    Posts::Create.call(params: post_params, current_user: current_user).post
   end
 
   def update_post
-    Posts::Update.call!(params: post_params, post: post, current_user: current_user).post
+    Posts::Update.call(params: post_params, post: post, current_user: current_user).post
+  end
+
+  def authorize_resource
+    authorize post
   end
 end
