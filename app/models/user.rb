@@ -1,10 +1,12 @@
 class User < ApplicationRecord
+  before_create :generate_authentication_token
+
   devise :database_authenticatable, :registerable, :confirmable,
     :recoverable, :rememberable, :trackable, :validatable, :lockable
 
   validates :full_name, presence: true
 
-  before_create :generate_authentication_token
+  has_many :posts
 
   private
 

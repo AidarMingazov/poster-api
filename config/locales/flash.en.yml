@@ -19,3 +19,4 @@ en:
       destroy:
         notice: '%{resource_name} was successfully destroyed.'
         alert: '%{resource_name} could not be destroyed.'
+    user_not_authorized: "You are not authorized! Please sign in."
