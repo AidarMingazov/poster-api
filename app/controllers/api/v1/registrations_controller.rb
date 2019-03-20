@@ -4,7 +4,7 @@ module Api
       skip_before_action :authenticate
 
       def create
-        render json: created_user, serializer: RegisteUserSerializer, status: :created
+        render json: created_user, serializer: RegisterUserSerializer, status: :created
       rescue ActiveRecord::RecordInvalid => invalid
         render_error(invalid.record.errors.full_messages.join(", "))
       end
