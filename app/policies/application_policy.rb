@@ -3,12 +3,6 @@ class ApplicationPolicy
 
   def initialize(user, record)
     @user = user
-    @record = record
-  end
-
-  private
-
-  def owner?
-    record.user == user
+    @record = record.to_model
   end
 end
