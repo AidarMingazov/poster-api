@@ -14,10 +14,9 @@ class PostsController < ApplicationController
 
   def create
     post = current_user.posts.create(post_params)
-    
+
     respond_with post
   end
-
 
   def update
     post.update(post_params)
