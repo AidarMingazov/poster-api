@@ -3,6 +3,9 @@ class PostsController < ApplicationController
 
   before_action :authorize_resource
 
+  def show
+  end
+
   def new
   end
 
