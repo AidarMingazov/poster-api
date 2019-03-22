@@ -1,7 +1,12 @@
 class PostsController < ApplicationController
+  around_action :skip_bullet, only: %i[index]
   expose_decorated :post
+  expose_decorated :posts, :fetch_posts
 
-  before_action :authorize_resource
+  before_action :authorize_resource, except: %i[index show]
+
+  def index
+  end
 
   def show
   end
@@ -13,7 +18,8 @@ class PostsController < ApplicationController
   end
 
   def create
-    post = current_user.posts.create(post_params)
+    post.user = current_user
+    post.save
 
     respond_with post
   end
@@ -25,6 +31,10 @@ class PostsController < ApplicationController
   end
 
   private
+
+  def fetch_posts
+    Post.order(created_at: :desc).all.page(params[:page]).per(10)
+  end
 
   def post_params
     params.require(:post).permit(:title, :body)

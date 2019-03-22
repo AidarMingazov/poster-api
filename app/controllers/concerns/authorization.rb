@@ -9,6 +9,6 @@ module Authorization
   private
 
   def user_not_authorized
-    redirect_to new_user_session_path, alert: I18n.t("flash.user_not_authorized")
+    redirect_to root_path, alert: I18n.t("flash.user_not_authorized")
   end
 end
