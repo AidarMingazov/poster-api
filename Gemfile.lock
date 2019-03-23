@@ -307,6 +307,11 @@ GEM
     rainbow (2.2.2)
       rake
     rake (12.3.2)
+    ransack (2.1.1)
+      actionpack (>= 5.0)
+      activerecord (>= 5.0)
+      activesupport (>= 5.0)
+      i18n
     rb-fsevent (0.9.8)
     rb-inotify (0.9.8)
       ffi (>= 0.5.0)
@@ -491,6 +496,7 @@ DEPENDENCIES
   rails-assets-jquery-ujs!
   rails-assets-jquery2!
   rails-erd
+  ransack
   responders
   rollbar
   rspec-its
