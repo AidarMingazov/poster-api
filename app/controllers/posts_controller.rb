@@ -4,6 +4,7 @@ class PostsController < ApplicationController
 
   expose_decorated :post
   expose_decorated :posts, :fetch_posts
+  expose :q, :fetch_query
 
   def index
   end
@@ -33,7 +34,12 @@ class PostsController < ApplicationController
   private
 
   def fetch_posts
-    Post.includes(:user).order(created_at: :desc).all.page(params[:page]).per(10)
+    fetch_query
+      .result(distinct: true)
+      .includes(:user)
+      .order(created_at: :desc)
+      .page(params[:page])
+      .per(10)
   end
 
   def post_params
@@ -42,5 +48,9 @@ class PostsController < ApplicationController
 
   def authorize_resource
     authorize post
+  end
+
+  def fetch_query
+    Post.ransack(params[:q])
   end
 end
