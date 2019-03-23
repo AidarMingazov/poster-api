@@ -17,6 +17,9 @@
             required: false
         = f.input :password_confirmation,
             required: false
+        label My Avatar
+        = image_tag(current_user.avatar.url)
+        = f.file_field :avatar
 
       .form-actions
         = f.button :submit, "Update"
