@@ -14,3 +14,4 @@ vendor/ruby
 .pryrc
 public/uploads/*
 .byebug_history
+.DS_Store
