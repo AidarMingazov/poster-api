@@ -12,4 +12,5 @@ vendor/ruby
 ._*
 .env
 .pryrc
+public/uploads/*
 .byebug_history

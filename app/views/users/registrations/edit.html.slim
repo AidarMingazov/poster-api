@@ -7,7 +7,7 @@
     = simple_form_for resource,
         as: resource_name,
         url: registration_path(resource_name),
-        html: { method: :put } do |f|
+        html: { multipart: true, method: :put } do |f|
 
       .form-inputs
         = f.input :full_name, required: true, autofocus: true
@@ -17,6 +17,9 @@
             required: false
         = f.input :password_confirmation,
             required: false
+        label My Avatar
+        = image_tag(current_user.avatar.url)
+        = f.file_field :avatar
 
       .form-actions
         = f.button :submit, "Update"
