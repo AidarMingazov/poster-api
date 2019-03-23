@@ -1,5 +1,5 @@
 = simple_form_for post do |f|
-  = f.input :title, label: 'Post title'
-  = f.input :body, label: 'Post body'
+  = f.input :title, label: 'Post title', required: true
+  = f.input :body, label: 'Post body', required: true
 
   = f.button :submit

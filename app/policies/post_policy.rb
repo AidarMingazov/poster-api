@@ -1,6 +1,6 @@
 class PostPolicy < ApplicationPolicy
   def new?
-    user.present?
+    true
   end
 
   def edit?
@@ -8,7 +8,7 @@ class PostPolicy < ApplicationPolicy
   end
 
   def create?
-    user.present?
+    true
   end
 
   def update?

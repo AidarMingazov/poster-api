@@ -8,12 +8,12 @@ feature "Update post" do
   scenario "User updates a post" do
     visit edit_post_path(post)
 
-    fill_in "Post title", with: "title"
-    fill_in "Post body", with: "body"
+    fill_in "Post title", with: "title for post"
+    fill_in "Post body", with: "body for post"
     click_on "Update Post"
 
-    expect(page).to have_content("title")
-    expect(page).to have_content("body")
+    expect(page).to have_content("title for post")
+    expect(page).to have_content("body for post")
   end
 
   context "with invalid params" do

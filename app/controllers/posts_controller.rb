@@ -1,9 +1,9 @@
 class PostsController < ApplicationController
-  around_action :skip_bullet, only: %i[index]
+  before_action :authorize_resource, except: %i[index show]
+  skip_before_action :authenticate_user!, only: %i[index show]
+
   expose_decorated :post
   expose_decorated :posts, :fetch_posts
-
-  before_action :authorize_resource, except: %i[index show]
 
   def index
   end
@@ -33,7 +33,7 @@ class PostsController < ApplicationController
   private
 
   def fetch_posts
-    Post.order(created_at: :desc).all.page(params[:page]).per(10)
+    Post.includes(:user).order(created_at: :desc).all.page(params[:page]).per(10)
   end
 
   def post_params

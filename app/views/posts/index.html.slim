@@ -5,17 +5,7 @@
   br
   br
   - posts.each do |post|
-      h3
-        = link_to post.title, post_path(post)
-      blockquote
-        p
-          = post.body
-        cite
-          = post.author
-          hr
-      - if policy(post).edit?
-        .float-right
-          = link_to 'Edit', edit_post_path(post)
+    = render post
 
   br
   = paginate posts
