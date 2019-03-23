@@ -1,0 +1,11 @@
+.medium-offset-3.medium-6
+  h1 Posts
+
+  = link_to 'New Post', new_post_path if user_signed_in?
+  br
+  br
+  - posts.each do |post|
+    = render post
+
+  br
+  = paginate posts
