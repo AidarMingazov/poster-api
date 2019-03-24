@@ -159,6 +159,8 @@ GEM
       sass (>= 3.3.0, < 3.5)
       sprockets-es6 (>= 0.9.0)
     foundation_emails (2.2.1.0)
+    friendly_id (5.2.5)
+      activerecord (>= 4.0.0)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     google-analytics-rails (1.1.1)
@@ -470,6 +472,7 @@ DEPENDENCIES
   formulaic
   foundation-icons-sass-rails
   foundation-rails
+  friendly_id
   google-analytics-rails
   guard-rspec
   health_check

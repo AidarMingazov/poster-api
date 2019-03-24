@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   before_action :authorize_resource, except: %i[index show]
   skip_before_action :authenticate_user!, only: %i[index show]
 
-  expose_decorated :post
+  expose_decorated :post, find_by: :slug
   expose_decorated :posts, :fetch_posts
   expose :q, :fetch_query
 
@@ -43,7 +43,7 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:title, :body)
+    params.require(:post).permit(:title, :body, :slug)
   end
 
   def authorize_resource

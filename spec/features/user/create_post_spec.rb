@@ -3,11 +3,14 @@ require "rails_helper"
 feature "Create a post" do
   include_context "current user signed in"
 
-  scenario "User creates a post" do
+  background do
     visit new_post_path
+  end
 
+  scenario "User creates a post" do
     fill_in "Post title", with: "title"
     fill_in "Post body", with: "body"
+    fill_in "Post url", with: "slug"
     click_on "Create Post"
 
     expect(page).to have_content("Post was successfully created.")
@@ -17,8 +20,6 @@ feature "Create a post" do
 
   context "with invalid params" do
     scenario "User creates a post" do
-      visit new_post_path
-
       fill_in "Post body", with: "body"
       click_on "Create Post"
 
