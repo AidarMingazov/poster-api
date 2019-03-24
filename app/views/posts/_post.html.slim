@@ -5,7 +5,12 @@ blockquote
     = post.body
   cite
     = post.author
-    hr
-- if policy(post).edit?
-  .float-right
-    = link_to 'Edit', edit_post_path(post)
+
+  - if policy(post).edit?
+    .float-right
+      = link_to 'Edit', edit_post_path(post)
+  br
+  .float-right.cite comments
+  br
+  = render "comments/comments", comments: post.comments, post: post
+= render "comments/form", post: post

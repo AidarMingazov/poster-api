@@ -7,4 +7,5 @@ class Post < ApplicationRecord
   validates :slug, uniqueness: { case_sensitive: false }, presence: true
 
   belongs_to :user
+  has_many :comments, dependent: :destroy
 end
