@@ -1,0 +1,4 @@
+= simple_form_for comment, url: post_comments_path(post) do |f|
+  .input-group
+    = f.input_field :text, label: false
+    = f.button :submit, class: "button submit"

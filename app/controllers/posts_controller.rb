@@ -1,10 +1,12 @@
 class PostsController < ApplicationController
   before_action :authorize_resource, except: %i[index show]
   skip_before_action :authenticate_user!, only: %i[index show]
+  around_action :skip_bullet, only: %i[show]
 
   expose_decorated :post, find_by: :slug
   expose_decorated :posts, :fetch_posts
   expose :q, :fetch_query
+  expose :comment, -> { Comment.new }
 
   def index
   end
@@ -37,6 +39,7 @@ class PostsController < ApplicationController
     fetch_query
       .result(distinct: true)
       .includes(:user)
+      .includes(:comments)
       .order(created_at: :desc)
       .page(params[:page])
       .per(10)
