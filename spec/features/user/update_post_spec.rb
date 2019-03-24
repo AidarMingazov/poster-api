@@ -6,7 +6,7 @@ feature "Update post" do
   let!(:post) { create :post, user: current_user }
 
   background do
-    visit edit_post_path(post.slug)
+    visit edit_post_path(post)
   end
 
   scenario "User updates a post" do
@@ -17,7 +17,7 @@ feature "Update post" do
 
     expect(page).to have_content("title for post")
     expect(page).to have_content("body for post")
-    expect(post.slug).to eq("slug_1")
+    expect(post.reload.slug).to eq("slug_1")
   end
 
   context "with invalid params" do
