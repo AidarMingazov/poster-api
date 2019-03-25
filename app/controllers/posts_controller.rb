@@ -7,6 +7,7 @@ class PostsController < ApplicationController
   expose_decorated :posts, :fetch_posts
   expose :q, :fetch_query
   expose :comment, -> { Comment.new }
+  expose :rating, -> { Rating.new }
 
   def index
   end
@@ -40,6 +41,7 @@ class PostsController < ApplicationController
       .result(distinct: true)
       .includes(:user)
       .includes(:comments)
+      .includes(:ratings)
       .order(created_at: :desc)
       .page(params[:page])
       .per(10)

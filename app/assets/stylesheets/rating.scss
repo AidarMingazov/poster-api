@@ -1,0 +1,52 @@
+$ddd: #ddd;
+$bbb: #bbb;
+$six: #666;
+$fseven: #f70;
+$ea: #ea0;
+$goldenrod: #b57340;
+$gold: #ffd700;
+$csix: #c60;
+$nintinefour: #940;
+$shadow: rgba(0, 0, 0, .5);
+
+.rating {
+  float: left;
+}
+
+.rating:not(:checked) > input {
+  position: absolute;
+  top: -9999px;
+  clip: rect(0, 0, 0, 0);
+}
+
+.rating:not(:checked) > label {
+  width: 1em;
+  padding: 0 .1em;
+  float: right;
+  color: $ddd;
+  font-size: 200%;
+  line-height: 1.2;
+  text-shadow: 1px 1px $bbb, 2px 2px $six, .1em .1em .2em $shadow;
+  white-space: nowrap;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.rating:not(:checked) > label::before {
+  content: "★ ";
+}
+
+.rating:not(:checked) > label:hover,
+.rating:not(:checked) > label:hover ~ label {
+  color: $gold;
+  text-shadow: 1px 1px $goldenrod, 2px 2px $goldenrod, .1em .1em .2em $shadow;
+}
+
+.rating > input:checked + label:hover,
+.rating > input:checked + label:hover ~ label,
+.rating > input:checked ~ label:hover,
+.rating > input:checked ~ label:hover ~ label,
+.rating > label:hover ~ input:checked ~ label {
+  color: $ea;
+  text-shadow: 1px 1px $goldenrod, 2px 2px $goldenrod, .1em .1em .2em $shadow;
+}
