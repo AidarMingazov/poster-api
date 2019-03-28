@@ -1,0 +1,11 @@
+.medium-offset-3.medium-6
+  | Hello, friend!
+  br
+  | You would be able to leave some message to admin
+  br
+  br
+  = simple_form_for :contact, url: contact_index_path do |f|
+    = f.input :message, label: "Your message", as: :text, required: true
+    - if current_user.blank?
+      = f.input :email, label: "Your email address for response", required: true
+    = f.button :submit, "Send"
