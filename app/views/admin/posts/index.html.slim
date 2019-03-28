@@ -1,0 +1,13 @@
+.medium-offset-3.medium-6
+  - posts.each do |post|
+    p
+      = post.body
+    cite
+      = post.author
+    - if post.archived
+      | archived
+
+    .float-right
+      = link_to 'Edit', edit_admin_post_path(post)
+    br
+  = paginate posts
