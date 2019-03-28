@@ -1,6 +1,6 @@
 require "rails_helper"
 
-feature "Create a contact message" do
+feature "Create a contact message", js: true do
   include_context "current user signed in"
 
   let(:bcc) { "aidar.mingazov@flatstack.com" }
@@ -16,8 +16,6 @@ feature "Create a contact message" do
 
     expect(page).to have_content("Your message has been sent!")
 
-    open_email(bcc)
-
-    expect(current_email).to have_body_text(expected_mail)
+    expect(last_email_sent).to have_body_text(expected_mail)
   end
 end
