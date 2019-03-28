@@ -36,13 +36,7 @@ class PostsController < ApplicationController
   private
 
   def fetch_posts
-    fetch_query
-      .result(distinct: true)
-      .includes(:user)
-      .includes(:comments)
-      .order(created_at: :desc)
-      .page(params[:page])
-      .per(10)
+    PostsQuery.new(fetch_query, params[:page]).all.active
   end
 
   def post_params
