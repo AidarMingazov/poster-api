@@ -4,5 +4,8 @@ Rails.application.routes.draw do
     resources :comments, only: %i[create]
   end
   resources :contact, only: %i[new create]
+  namespace :admin do
+    resources :posts, only: %i[update index edit]
+  end
   root to: "posts#index"
 end

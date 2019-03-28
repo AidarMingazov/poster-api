@@ -1,5 +1,5 @@
 class PostDecorator < ApplicationDecorator
-  delegate :title, :body, :author, :user, :slug
+  delegate :title, :body, :author, :user, :slug, :archived
 
   decorates_association :comments
 
