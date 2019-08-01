@@ -1,5 +1,6 @@
 class RatingPolicy < ApplicationPolicy
+  # record accept Post object
   def create?
-    true
+    record.ratings.map(&:user).exclude?(user)
   end
 end

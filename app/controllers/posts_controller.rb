@@ -1,7 +1,6 @@
 class PostsController < ApplicationController
   before_action :authorize_resource, except: %i[index show]
   skip_before_action :authenticate_user!, only: %i[index show]
-  around_action :skip_bullet, only: %i[show]
 
   expose_decorated :post, find_by: :slug
   expose_decorated :posts, :fetch_posts

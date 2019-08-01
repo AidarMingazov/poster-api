@@ -1,22 +1,20 @@
 class RatingsController < ApplicationController
-  expose :post, find_by: :slug
+  expose_decorated :post, find_by: :slug
   expose :rating
 
   before_action :authorize_resource
 
   def create
-    rating.post = post
-    rating.user = current_user
     rating.save
   end
 
   private
 
   def rating_params
-    params.permit(:point, :post_id)
+    params.require(:rating).permit(:point).merge(user: current_user, post: post)
   end
 
   def authorize_resource
-    authorize rating
+    authorize rating.post
   end
 end

@@ -1,18 +1,13 @@
 class Rating
-  constructor: ->
-    @$el = $(".rating input")
+  constructor: (el) ->
+    @$el = $(el)
+    @_init()
 
-    @_bind()
+  _init: ->
+    @$el.click @_onClick
 
-  _bind: =>
-    @$el.click @_formSend
+  _onClick: (event) ->
+    $("#rate-form-#{event.target.className} #rating_point").val(event.target.value)
+    $("#rate-form-#{event.target.className}").submit()
 
-  _formSend: (e) =>
-    $('#new_rating')[0].submit ->
-      $.ajax
-        type: @method
-        url: @action
-        data: e.target.value
-
-$ ->
-  new Rating
+new Rating(el) for el in $(".rating input")

@@ -1,0 +1,8 @@
+.row
+  .medium-2.columns
+    = post.average_rate
+    .avarage-star
+
+  .medium-10.columns
+    - if RatingPolicy.new(current_user, post).create?
+      = render "ratings/form", post: post

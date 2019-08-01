@@ -1,17 +1,19 @@
-h3
-  = link_to post.title, post_path(post)
-blockquote
-  p
-    = post.body
-  cite
-    = post.author
+div[id="#{post.slug}"]
+  h3
+    = link_to post.title, post_path(post)
+  blockquote
+    p
+      = post.body
+    cite
+      = post.author
 
-  - if policy(post).edit?
-    .float-right
-      = link_to 'Edit', edit_post_path(post)
+    - if policy(post).edit?
+      .float-right
+        = link_to 'Edit', edit_post_path(post)
+    br
+    = render "comments/comments", comments: post.comments, post: post
+  .rating-container
+    = render "ratings/rating", post: post
   br
-  .float-right.cite comments
-  br
-  = render "comments/comments", comments: post.comments, post: post
-= render "ratings/form", post: post
-= render "comments/form", post: post
+  = render "comments/form", post: post
+
