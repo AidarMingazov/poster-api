@@ -1,5 +1,6 @@
 module Authorization
   extend ActiveSupport::Concern
+  include ActionView::ModelNaming
 
   included do
     include Pundit
