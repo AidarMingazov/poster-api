@@ -11,4 +11,8 @@ class Post < ApplicationRecord
   has_many :ratings
 
   scope :active, -> { where(archived: false) }
+
+  def average_rate
+    ratings.present? ? ratings.average(:point).round(1) : "no rating"
+  end
 end

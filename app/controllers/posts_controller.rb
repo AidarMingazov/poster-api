@@ -2,23 +2,11 @@ class PostsController < ApplicationController
   before_action :authorize_resource, except: %i[index show]
   skip_before_action :authenticate_user!, only: %i[index show]
 
-  expose_decorated :post, find_by: :slug
+  expose_decorated :post, :fetch_post
   expose_decorated :posts, :fetch_posts
   expose :q, :fetch_query
   expose :comment, -> { Comment.new }
   expose :rating, -> { Rating.new }
-
-  def index
-  end
-
-  def show
-  end
-
-  def new
-  end
-
-  def edit
-  end
 
   def create
     post.user = current_user
@@ -41,6 +29,10 @@ class PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:title, :body, :slug)
+  end
+
+  def fetch_post
+    Post.includes(comments: :user).find_by(slug: params[:id])
   end
 
   def authorize_resource

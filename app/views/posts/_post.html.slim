@@ -5,7 +5,7 @@ div[id="#{post.slug}"]
     p
       = post.body
     cite
-      = post.author
+      = post.author_full_name
 
     - if policy(post).edit?
       .float-right

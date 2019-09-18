@@ -7,8 +7,7 @@ class PostsQuery
   def all
     @relation
       .result(distinct: true)
-      .includes(:user)
-      .includes(:comments)
+      .includes(:user, :comments, :ratings)
       .order(created_at: :desc)
       .page(@page)
       .per(10)

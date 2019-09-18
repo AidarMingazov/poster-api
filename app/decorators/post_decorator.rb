@@ -1,14 +1,10 @@
 class PostDecorator < ApplicationDecorator
-  delegate :title, :body, :author, :user, :slug, :average_rate, :archived
+  delegate :title, :body, :author_full_name, :user, :slug, :average_rate, :archived
 
   decorates_association :comments
   decorates_association :ratings
 
-  def author
-    post.user.full_name
-  end
-
-  def average_rate
-    post.ratings.present? ? post.ratings.average(:point).round(1) : "no rating"
+  def author_full_name
+    user.full_name
   end
 end

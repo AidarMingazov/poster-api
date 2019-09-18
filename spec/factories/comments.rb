@@ -3,6 +3,6 @@ FactoryGirl.define do
     association :user
     association :post
 
-    text { Faker::Lorem.words(4) }
+    text { Faker::Lorem.sentence }
   end
 end
