@@ -1,8 +1,8 @@
 FactoryGirl.define do
-  factory :comment do
+  factory :rating do
     association :user
     association :post
 
-    text { Faker::Lorem.sentence }
+    point 3
   end
 end

@@ -8,6 +8,7 @@
 #= require jquery-ujs
 #= require foundation
 #= require current_user
+#= require rating
 #= require_tree ../templates
 #= require_tree .
 

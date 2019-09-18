@@ -1,0 +1,48 @@
+$ddd: #ddd;
+$bbb: #bbb;
+$goldenrod: #b57340;
+$gold: #ffd700;
+$shadow: rgba(0, 0, 0, .5);
+
+.avarage-star {
+  display: inline;
+  margin-left: 10px;
+  color: $gold;
+  font-size: 130%;
+  line-height: 2;
+  text-shadow: 1px 1px $bbb, 2px 2px $bbb, .1em .1em .2em $shadow;
+}
+
+.rating {
+  float: right;
+}
+
+.rating:not(:checked) > input {
+  position: absolute;
+  top: -9999px;
+  clip: rect(0, 0, 0, 0);
+}
+
+.rating:not(:checked) > label {
+  width: 1.05em;
+  padding: 0 .05em;
+  float: right;
+  color: $ddd;
+  font-size: 130%;
+  line-height: 2;
+  text-shadow: 1px 1px $bbb, 2px 2px $bbb, .1em .1em .2em $shadow;
+  white-space: nowrap;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.avarage-star::before,
+.rating:not(:checked) > label::before {
+  content: "★ ";
+}
+
+.rating:not(:checked) > label:hover,
+.rating:not(:checked) > label:hover ~ label {
+  color: $gold;
+  text-shadow: 1px 1px $goldenrod, 2px 2px $goldenrod, .1em .1em .2em $shadow;
+}

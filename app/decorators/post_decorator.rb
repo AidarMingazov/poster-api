@@ -1,9 +1,10 @@
 class PostDecorator < ApplicationDecorator
-  delegate :title, :body, :author, :user, :slug, :archived
+  delegate :title, :body, :author_full_name, :user, :slug, :average_rate, :archived
 
   decorates_association :comments
+  decorates_association :ratings
 
-  def author
-    post.user.full_name
+  def author_full_name
+    user.full_name
   end
 end

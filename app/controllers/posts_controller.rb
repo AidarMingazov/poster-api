@@ -1,24 +1,12 @@
 class PostsController < ApplicationController
   before_action :authorize_resource, except: %i[index show]
   skip_before_action :authenticate_user!, only: %i[index show]
-  around_action :skip_bullet, only: %i[show]
 
-  expose_decorated :post, find_by: :slug
+  expose_decorated :post, find: -> { find_post }
   expose_decorated :posts, :fetch_posts
   expose :q, :fetch_query
   expose :comment, -> { Comment.new }
-
-  def index
-  end
-
-  def show
-  end
-
-  def new
-  end
-
-  def edit
-  end
+  expose :rating, -> { Rating.new }
 
   def create
     post.user = current_user
@@ -37,6 +25,10 @@ class PostsController < ApplicationController
 
   def fetch_posts
     PostsQuery.new(fetch_query, params[:page]).all.active
+  end
+
+  def find_post
+    Post.includes(comments: :user).find_by(slug: params[:id])
   end
 
   def post_params
