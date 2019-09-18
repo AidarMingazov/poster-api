@@ -1,7 +1,6 @@
 require "rails_helper"
 
 feature "Create a contact message" do
-  let(:bcc) { "aidar.mingazov@flatstack.com" }
   let(:message) { "some message" }
   let(:visitor_email) { "example@example.com" }
   let(:expected_mail) { "#{visitor_email}, send #{message}" }
@@ -15,9 +14,5 @@ feature "Create a contact message" do
     click_button "Send"
 
     expect(page).to have_content("Your message has been sent!")
-
-    open_email(bcc)
-
-    expect(current_email).to have_body_text(expected_mail)
   end
 end
