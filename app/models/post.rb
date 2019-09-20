@@ -1,7 +1,7 @@
 class Post < ApplicationRecord
   extend FriendlyId
 
-  friendly_id :name, use: :slugged
+  friendly_id :title, use: :slugged
 
   validates :body, :title, :user, presence: true
   validates :slug, uniqueness: { case_sensitive: false }, presence: true
