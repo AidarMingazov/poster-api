@@ -32,7 +32,7 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:title, :body, :slug)
+    params.require(:post).permit(:title, :body)
   end
 
   def authorize_resource

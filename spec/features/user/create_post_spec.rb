@@ -10,7 +10,6 @@ feature "Create a post" do
   scenario "User creates a post" do
     fill_in "Post title", with: "title"
     fill_in "Post body", with: "body"
-    fill_in "Post url", with: "slug"
     click_on "Create Post"
 
     expect(page).to have_content("Post was successfully created.")
