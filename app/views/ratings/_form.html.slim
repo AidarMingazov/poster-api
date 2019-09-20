@@ -1,0 +1,8 @@
+= simple_form_for rating, url: post_ratings_path(post), remote: true, html: { id: "rate-form-#{post.slug}"} do |f|
+
+  = f.hidden_field :point
+
+  fieldset.rating
+    - (1..5).reverse_each do |value|
+      input id="#{post.slug}-#{value}" class="#{post.slug}" type="radio" value=value
+      label for="#{post.slug}-#{value}"

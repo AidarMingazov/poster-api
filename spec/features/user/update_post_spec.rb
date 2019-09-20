@@ -12,12 +12,10 @@ feature "Update post" do
   scenario "User updates a post" do
     fill_in "Post title", with: "title for post"
     fill_in "Post body", with: "body for post"
-    fill_in "Post url", with: "slug_1"
     click_on "Update Post"
 
     expect(page).to have_content("title for post")
     expect(page).to have_content("body for post")
-    expect(post.reload.slug).to eq("slug_1")
   end
 
   context "with invalid params" do
