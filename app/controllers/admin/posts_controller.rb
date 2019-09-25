@@ -25,7 +25,7 @@ module Admin
     end
 
     def post_params
-      params.require(:post).permit(:title, :body, :slug, :archived)
+      params.require(:post).permit(:title, :body, :slug)
     end
 
     def fetch_query

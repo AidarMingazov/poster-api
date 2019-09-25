@@ -2,4 +2,8 @@
   = f.input :title, label: 'Post title', required: true
   = f.input :body, label: 'Post body', required: true
 
-  = f.button :submit
+  = f.submit "Publish"
+  - if post.status == "draft"
+    =< f.submit "Save as draft"
+  - if post.status == "published"
+    =< f.submit "Archived"

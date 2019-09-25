@@ -9,6 +9,8 @@ GEM
   remote: https://rubygems.org/
   remote: https://rails-assets.org/
   specs:
+    aasm (5.0.6)
+      concurrent-ruby (~> 1.0)
     actioncable (5.1.6.2)
       actionpack (= 5.1.6.2)
       nio4r (~> 2.0)
@@ -135,6 +137,8 @@ GEM
       htmlentities (~> 4.3.3)
       launchy (~> 2.1)
       mail (~> 2.6.3)
+    enumerize (2.3.1)
+      activesupport (>= 3.2)
     erubi (1.8.0)
     execjs (2.7.0)
     factory_girl (4.8.0)
@@ -447,6 +451,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  aasm
   active_link_to
   autoprefixer-rails
   awesome_print
@@ -466,6 +471,7 @@ DEPENDENCIES
   dotenv-rails
   draper
   email_spec
+  enumerize
   factory_girl_rails
   faker
   flamegraph

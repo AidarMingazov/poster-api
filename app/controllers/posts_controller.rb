@@ -10,6 +10,7 @@ class PostsController < ApplicationController
 
   def create
     post.user = current_user
+    post.published if params[:commit] == "Publish"
     post.save
 
     respond_with post
@@ -17,6 +18,7 @@ class PostsController < ApplicationController
 
   def update
     post.update(post_params)
+    post.published if params[:commit] == "Publish"
 
     respond_with post
   end
@@ -24,7 +26,7 @@ class PostsController < ApplicationController
   private
 
   def fetch_posts
-    PostsQuery.new(fetch_query, params[:page]).all.active
+    PostsQuery.new(fetch_query, params[:page]).all.published
   end
 
   def find_post

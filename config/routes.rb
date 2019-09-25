@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     resources :comments, only: %i[create]
     resources :ratings, defaults: { format: "js" }, only: %i[create]
   end
+  resources :my_posts, only: %i[index]
   resources :contact, only: %i[new create]
   namespace :admin do
     resources :posts, only: %i[update index edit]

@@ -3,6 +3,10 @@ class PostPolicy < ApplicationPolicy
     true
   end
 
+  def index?
+    list_owner?
+  end
+
   def edit?
     owner?
   end

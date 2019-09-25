@@ -11,4 +11,9 @@ class ApplicationPolicy
   def owner?
     record.user == user
   end
+
+  def list_owner?
+    owners = record.map(&:user).uniq
+    owners.count == 1 && owners.first == user
+  end
 end

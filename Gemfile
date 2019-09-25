@@ -27,11 +27,13 @@ gem "simple_form"
 gem "slim"
 
 # all other gems
+gem "aasm"
 gem "carrierwave"
 gem "decent_decoration"
 gem "decent_exposure"
 gem "devise"
 gem "draper"
+gem "enumerize"
 gem "flamegraph"
 gem "friendly_id"
 gem "google-analytics-rails"
