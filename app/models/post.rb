@@ -19,11 +19,7 @@ class Post < ApplicationRecord
     state :published
     state :archived
 
-    event(:published) { transitions(from: %i[draft archived published], to: :published) }
-    event(:archived) { transitions(from: %i[draft published], to: :archived) }
-  end
-
-  def average_rate
-    ratings.present? ? ratings.average(:point).round(1) : "no rating"
+    event(:published) { transitions(from: %i[draft published], to: :published) }
+    event(:archived) { transitions(from: %i[draft archived published], to: :archived) }
   end
 end

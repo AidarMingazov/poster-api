@@ -4,5 +4,6 @@ FactoryGirl.define do
 
     body { Faker::Lorem.paragraph(3) }
     title { Faker::Lorem.sentence }
+    status { "published" }
   end
 end

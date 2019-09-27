@@ -10,15 +10,16 @@ class PostsController < ApplicationController
 
   def create
     post.user = current_user
-    post.published if params[:commit] == "Publish"
+    post_status
+
     post.save
 
     respond_with post
   end
 
   def update
+    post_status
     post.update(post_params)
-    post.published if params[:commit] == "Publish"
 
     respond_with post
   end
@@ -35,6 +36,11 @@ class PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:title, :body)
+  end
+
+  def post_status
+    post.published if params[:commit] == "Publish"
+    post.archived if params[:commit] == "Archived"
   end
 
   def authorize_resource

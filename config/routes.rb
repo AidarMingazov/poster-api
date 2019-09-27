@@ -6,8 +6,5 @@ Rails.application.routes.draw do
   end
   resources :my_posts, only: %i[index]
   resources :contact, only: %i[new create]
-  namespace :admin do
-    resources :posts, only: %i[update index edit]
-  end
   root to: "posts#index"
 end

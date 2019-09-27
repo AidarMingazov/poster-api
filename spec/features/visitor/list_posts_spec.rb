@@ -2,7 +2,7 @@ require "rails_helper"
 feature "List posts" do
   let!(:post_1) { create :post, title: "some title", body: "text body" }
   let!(:post_2) { create :post, title: "new title", body: "some body text" }
-  let!(:post_3) { create :post, archived: true }
+  let!(:post_3) { create :post, status: "archived" }
 
   background do
     visit posts_path

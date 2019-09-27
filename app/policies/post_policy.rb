@@ -8,7 +8,7 @@ class PostPolicy < ApplicationPolicy
   end
 
   def edit?
-    owner?
+    owner? || admin?
   end
 
   def create?
@@ -16,6 +16,14 @@ class PostPolicy < ApplicationPolicy
   end
 
   def update?
-    owner?
+    owner? || admin?
+  end
+
+  def archived?
+    (owner? || admin?) && !record.archived?
+  end
+
+  def published?
+    (owner? || admin? || record.new_record?) && record.draft?
   end
 end
