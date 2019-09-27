@@ -1,0 +1,6 @@
+.medium-offset-3.medium-6
+  h1 My posts
+  - posts.each do |post|
+    = render "posts/post", post: post
+  br
+  = paginate posts

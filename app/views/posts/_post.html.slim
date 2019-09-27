@@ -7,9 +7,11 @@ div[id="#{post.slug}"]
     cite
       = post.author_full_name
 
-    - if policy(post).edit?
-      .float-right
-        = link_to 'Edit', edit_post_path(post)
+    - if current_user.present? && policy(post).edit?
+      .text-right
+        .post-status
+          = post.status
+        =< link_to 'edit', edit_post_path(post)
     br
     = render "comments/comments", comments: post.comments, post: post
   .rating-container

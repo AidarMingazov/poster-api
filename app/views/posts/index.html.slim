@@ -1,16 +1,13 @@
 .medium-offset-3.medium-6
   h1 Posts
-
   = search_form_for q do |f|
     .input-group.searchbar
       = f.submit class: "button search"
       = f.search_field :body_or_title_cont
-
   = link_to 'New Post', new_post_path, class: "button" if user_signed_in?
   br
   br
   - posts.each do |post|
     = render post
-
   br
   = paginate posts

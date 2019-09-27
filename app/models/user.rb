@@ -1,5 +1,9 @@
 class User < ApplicationRecord
+  extend Enumerize
+
   mount_uploader :avatar, AvatarUploader
+
+  enumerize :role, in: %i[user admin], predicates: true, scope: true
 
   devise :database_authenticatable, :registerable, :confirmable,
     :recoverable, :rememberable, :trackable, :validatable, :lockable

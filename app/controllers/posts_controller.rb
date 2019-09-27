@@ -10,12 +10,15 @@ class PostsController < ApplicationController
 
   def create
     post.user = current_user
+    post_status
+
     post.save
 
     respond_with post
   end
 
   def update
+    post_status
     post.update(post_params)
 
     respond_with post
@@ -24,7 +27,7 @@ class PostsController < ApplicationController
   private
 
   def fetch_posts
-    PostsQuery.new(fetch_query, params[:page]).all.active
+    PostsQuery.new(fetch_query, params[:page]).all.published
   end
 
   def find_post
@@ -33,6 +36,11 @@ class PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:title, :body)
+  end
+
+  def post_status
+    post.published if params[:commit] == "Publish"
+    post.archived if params[:commit] == "Archived"
   end
 
   def authorize_resource
